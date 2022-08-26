@@ -1,0 +1,240 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <script src="~/NgScript/Controllers/NgController.js"></script>
+    <script src="~/NgScript/Services/crudService.js"></script>
+    <style>
+        /* Text alignment for body */
+        body {
+            text-align: center;
+        }
+
+        /* Styling h1 tag */
+        h1 {
+            color: green;
+            text-align: center;
+        }
+
+        /* Styling modal */
+        .modal-dialog {
+            //width:50%;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: 0;
+        }
+
+        .modal .modal-content {
+            padding: 20px 20px 20px 20px;
+            -webkit-animation-name: modal-animation;
+            -webkit-animation-duration: 0.5s;
+            animation-name: modal-animation;
+            animation-duration: 0.5s;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+
+        <h2>Student Course Log</h2>
+        <form class="form-horizontal" @*ng-submit="submitStudnetForm()" role="form"*@>
+            <input type="hidden" id="id" readonly="readonly" ng-model="id" />
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                <div class="col-sm-6">
+                    <input type="text" id="firstName" class="form-control" ng-model="firstName" />
+                </div>
+                <button type="button" id="btn1" class="btn btn-primary" ng-click="loadalertt()">
+                    XX
+                </button>
+                <div class="col-sm-3"></div>
+
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                <div class="col-sm-6">
+                    <input type="text" id="lastName" class="form-control" ng-model="lastName" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="inputClass">Select Course</label>
+
+                <div class="col-sm-6" style="width:10px">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-target="#exampleModalCenter" ng-click="LoadPopupTable()">
+                        +
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Insert Courses</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-body no-padding">
+                                        <div id="customScrolledTableInspac" style="overflow: auto; max-width: 1000px;">
+                                            <style>
+                                                input[type=number]::-webkit-inner-spin-button,
+                                                input[type=number]::-webkit-outer-spin-button {
+                                                    -webkit-appearance: none;
+                                                    -moz-appearance: none;
+                                                    margin: 0;
+                                                }
+                                            </style>
+
+                                            <table class="table table-hover general-table" style="overflow: auto;">
+                                                <thead class="grid-top-panel">
+                                                    <tr>
+                                                        <th class="defaultClass" style="min-width:100px">Subject</th>
+                                                        <th class="defaultClass" style="min-width:100px">Number</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+
+                                            <div class="rowdiv" style="max-height: 350px; overflow: auto; min-width: 300px">
+                                                <table style="width: 100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="sub1" class="form-control" ng-model="sub1" />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="num1" class="form-control" ng-model="num1" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="sub2" class="form-control" ng-model="sub2" />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="num2" class="form-control" ng-model="num2" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="sub3" class="form-control" ng-model="sub3" />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="num3" class="form-control" ng-model="num3" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="sub4" class="form-control" ng-model="sub4" />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" id="num4" class="form-control" ng-model="num4" />
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<span class="error" ng-show="(frmDailyProduction.$dirty||submitted) && frmDailyProduction.txtArticleNo.$error.required">*</span>*@
+
+            </div>
+
+            <div class="form-group">
+                <label for="dob" class="col-sm-3 control-label">Joining Date</label>
+                <div class="col-sm-2">
+                    <input type="date" id="dob" class="form-control" ng-model="dob" />
+                </div>
+                <div class="col-sm-7"></div>
+            </div>
+
+
+
+
+            <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3" ng-click="submitItemForm()" />
+            <input type="reset" value="Reset" ng-click="rrresetForm()" class="btn" /> <br />
+            @* Note: This form will not be submitted in demo. *@
+        </form>
+        <div class="col-sm-6" >
+            <br />
+            <input type="button" class="btn btn-danger" value="Show" ng-click="showList()" />
+            <div ui-grid="gridOptions" @*ng-show="myVar"*@ ui-grid-pagination></div>
+        </div>
+
+        @*<div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("~/Views/Home/_modalCourse.cshtml")
+                </div>
+            </div>*@
+
+
+        @*<form ng-submit="ShowList()">
+                    <br/>
+
+
+                    <input type="submit" class="btn btn-danger" value="Show" />
+                    <div ui-grid="gridOptions" ui-grid-pagination></div>
+                </form>
+            <div>
+                <br />
+                <input type="button" class="btn btn-danger" value="Show" ng-click="showList()" />
+                <div ui-grid="gridOptions" ui-grid-pagination></div>
+            </div>*@
+
+
+
+    </div>
+</body>
+</html>
+@*@section AngularScript{
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="http://ui-grid.info/release/ui-grid.js"></script>
+        <script src="~/NgScript/Controllers/NgController.js"></script>
+        <script src="~/NgScript/Services/crudService.js"></script>
+    }*@

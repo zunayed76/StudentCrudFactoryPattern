@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="scDBModelStoreContainer" CdmEntityContainer="scDBEntities">
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="scDBModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="sub1" ColumnName="sub1" />
+          <ScalarProperty Name="num1" ColumnName="num1" />
+          <ScalarProperty Name="sub2" ColumnName="sub2" />
+          <ScalarProperty Name="num2" ColumnName="num2" />
+          <ScalarProperty Name="sub3" ColumnName="sub3" />
+          <ScalarProperty Name="num3" ColumnName="num3" />
+          <ScalarProperty Name="sub4" ColumnName="sub4" />
+          <ScalarProperty Name="num4" ColumnName="num4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertData" FunctionName="scDBModel.Store.InsertData" />
+    <FunctionImportMapping FunctionImportName="ShowData" FunctionName="scDBModel.Store.ShowData" />
+    <FunctionImportMapping FunctionImportName="UpdateData" FunctionName="scDBModel.Store.UpdateData" />
+    <FunctionImportMapping FunctionImportName="DeleteData" FunctionName="scDBModel.Store.DeleteData" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="scDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sub1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="num1" Type="Int32" />
+    <Property Name="sub2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="num2" Type="Int32" />
+    <Property Name="sub3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="num3" Type="Int32" />
+    <Property Name="sub4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="num4" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="scDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <FunctionImport Name="InsertData">
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="dob" Mode="In" Type="String" />
+      <Parameter Name="sub1" Mode="In" Type="String" />
+      <Parameter Name="num1" Mode="In" Type="Int32" />
+      <Parameter Name="sub2" Mode="In" Type="String" />
+      <Parameter Name="num2" Mode="In" Type="Int32" />
+      <Parameter Name="sub3" Mode="In" Type="String" />
+      <Parameter Name="num3" Mode="In" Type="Int32" />
+      <Parameter Name="sub4" Mode="In" Type="String" />
+      <Parameter Name="num4" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ShowData" />
+    <FunctionImport Name="UpdateData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="dob" Mode="In" Type="String" />
+      <Parameter Name="sub1" Mode="In" Type="String" />
+      <Parameter Name="num1" Mode="In" Type="Int32" />
+      <Parameter Name="sub2" Mode="In" Type="String" />
+      <Parameter Name="num2" Mode="In" Type="Int32" />
+      <Parameter Name="sub3" Mode="In" Type="String" />
+      <Parameter Name="num3" Mode="In" Type="Int32" />
+      <Parameter Name="sub4" Mode="In" Type="String" />
+      <Parameter Name="num4" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
